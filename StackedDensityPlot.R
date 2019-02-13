@@ -1,9 +1,13 @@
 library(ggplot2)
 library(RColorBrewer)
 library(ggpubr)
+library(arcgisbinding)
+
+arc.check_product()
 
 #import data table containing EO records, with column coding for taxa groupings (column dat$Group)
-dat <- read.csv("EOdat.csv")
+dat <- arc.open("W:/Heritage/Heritage_Data/Biotics_datasets.gdb/eo_ptreps")
+dat <- arc.select(dat)
 names(dat)
 
 #clean EO data--remove rows missing data for year
