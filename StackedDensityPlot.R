@@ -10,6 +10,9 @@ dat <- arc.open("W:/Heritage/Heritage_Data/Biotics_datasets.gdb/eo_ptreps")
 dat <- arc.select(dat)
 names(dat)
 
+dat2$Year <-  parse_date_time(dat2$LASTOBS, c("Ymd","bdY","dby","Ym","Y","Y!")) #this works for cleaning dates, mostly what is left is just "NO DATE" and a handful of other weird ones
+dat2$Year <- year(dat2$Year) #pull out just year
+
 #clean EO data--remove rows missing data for year
 dat2 <- dat[complete.cases(dat),]
 
